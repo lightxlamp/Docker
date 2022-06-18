@@ -12,6 +12,4 @@ ENV PORT 4200
 
 EXPOSE $PORT
 
-VOLUME [ "/data" ]
-
 CMD ["node", "app.js"]
