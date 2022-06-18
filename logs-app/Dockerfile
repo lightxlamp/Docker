@@ -10,6 +10,6 @@ COPY . .
 
 ENV PORT 4200
 
-EXPOSE $PORT
+EXPOSE $PORT 
 
 CMD ["node", "app.js"]
