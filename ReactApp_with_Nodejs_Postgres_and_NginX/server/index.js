@@ -1,4 +1,5 @@
-const keys = import('./keys.js');
+const keys =
+    import ('./keys.js');
 
 // Express APP setup
 const express = require('express');
@@ -10,7 +11,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // Postgress client setup
-const {Pool} = require("pg");
+const { Pool } = require("pg");
 const pgClient = new Pool({
     user: keys.pgUser,
     host: keys.pgHost,
@@ -21,9 +22,9 @@ const pgClient = new Pool({
 
 pgClient.on("connect", (client) => {
     client
-    .query("CREATE TABLE IF NOT EXISTS values (number INT)")
-    .catch(err => console.log('PG Error', err));
-}) 
+        .query("CREATE TABLE IF NOT EXISTS values (number INT)")
+        .catch(err => console.log('PG Error', err));
+})
 
 // Express route definitions 
 app.get("/", (req, res) => {
@@ -31,16 +32,16 @@ app.get("/", (req, res) => {
 })
 
 app.get("/values/all", async(req, res) => {
-    const values = await pgClient.query("SELECT * FROM values") 
+    const values = await pgClient.query("SELECT * FROM values")
     res.send(values)
 })
 
 app.post("/values", async(req, res) => {
-    if(!req.body.value) {
-        res.send({working: false});
+    if (!req.body.value) {
+        res.send({ working: false });
     }
     await pgClient.query("INSTERT INTO values(number) VALUES($1)", req.body.value)
-    res.send({working: true});
+    res.send({ working: true });
 })
 
 app.listen(5000, (err) => {
