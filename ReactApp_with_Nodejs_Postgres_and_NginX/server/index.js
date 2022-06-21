@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-// Postgress client setup
+// Postgres client setup
 const { Pool } = require("pg");
 const pgClient = new Pool({
     user: keys.pgUser,
@@ -40,7 +40,7 @@ app.post("/values", async(req, res) => {
     if (!req.body.value) {
         res.send({ working: false });
     }
-    await pgClient.query("INSTERT INTO values(number) VALUES($1)", req.body.value)
+    await pgClient.query("INSERT INTO values(number) VALUES($1)", req.body.value)
     res.send({ working: true });
 })
 
