@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import OtherPage from './OtherPage.js';
+import MainComponent from './MainComponent.js';
+import { Fragment } from 'react';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Fragment>
+        <header>
+          <div>This is a multicontainer app</div>
+          <Link to="/">Home</Link>
+          <br/>
+          <Link to="/otherpage">Other Page</Link>
+        </header>
+        <br/>
+        <div>
+          <Route exact path="/" component={MainComponent} />
+          <Route path="/otherpage" component={OtherPage} />
+        </div>
+      </Fragment> 
+    </Router>
   );
 }
 
