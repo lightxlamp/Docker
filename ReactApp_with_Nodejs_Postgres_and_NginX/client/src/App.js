@@ -9,14 +9,16 @@ function App() {
   return (
     <Router>
       <Fragment>
-        <header>
+        <header className='header'>
           <div>This is a multicontainer app</div>
           <Link to="/">Home</Link>
           <br/>
           <Link to="/otherpage">Other Page</Link>
+          <br/>
+          <br/>
         </header>
         <br/>
-        <div>
+        <div className='main'>
           <Route exact path="/" component={MainComponent} />
           <Route path="/otherpage" component={OtherPage} />
         </div>
