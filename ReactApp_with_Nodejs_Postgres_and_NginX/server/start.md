@@ -1,0 +1,1 @@
+docker run -it -p 4003:5000 back-front-app-server 
