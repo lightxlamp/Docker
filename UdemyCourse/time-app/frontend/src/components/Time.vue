@@ -42,7 +42,7 @@ export default {
     >
       <div class="deleted-item">{{ savedTime.time }}</div>
       <button class="btn-sm bg-red" @click="() => deleteTime(savedTime.id)">
-        Удалить
+        Remove record
       </button>
     </div>
   </div>
